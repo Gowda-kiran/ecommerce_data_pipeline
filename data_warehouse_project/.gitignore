@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Database
+*.db
+*.sqlite
+*.log
+
+# Configuration
+config/config.yaml
+.env
+
+# Data files
+data/source/*.csv
+data/staging/*.csv
+data/warehouse/*.parquet
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# dbt
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Airflow
+airflow.db
+airflow.cfg
+logs/

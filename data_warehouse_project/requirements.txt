@@ -1,0 +1,40 @@
+# Data Warehouse Project Requirements
+
+# Database Connectivity
+psycopg2-binary==2.9.9
+sqlalchemy==2.0.25
+
+# Data Processing
+pandas==2.1.4
+numpy==1.26.2
+
+# ETL & Orchestration
+apache-airflow==2.8.0
+dbt-core==1.7.4
+dbt-postgres==1.7.4
+
+# Data Quality
+great-expectations==0.18.8
+pydantic==2.5.3
+
+# Utilities
+python-dotenv==1.0.0
+pyyaml==6.0.1
+click==8.1.7
+
+# Logging & Monitoring
+structlog==24.1.0
+
+# Testing
+pytest==7.4.3
+pytest-cov==4.1.0
+faker==22.0.0
+
+# Documentation
+mkdocs==1.5.3
+mkdocs-material==9.5.3
+
+# Development Tools
+black==23.12.1
+flake8==7.0.0
+pylint==3.0.3
