@@ -1,0 +1,67 @@
+# E-commerce Data Pipeline Configuration
+
+# Data Paths
+paths:
+  raw_data: "data/raw"
+  bronze_layer: "data/bronze"
+  silver_layer: "data/silver"
+  gold_layer: "data/gold"
+
+# Source Data Files
+sources:
+  transactions: "transactions.csv"
+  customers: "customers.csv"
+  products: "products.csv"
+
+# Spark Configuration
+spark:
+  app_name: "EcommerceDataPipeline"
+  master: "local[*]"
+  configs:
+    spark.sql.adaptive.enabled: "true"
+    spark.sql.adaptive.coalescePartitions.enabled: "true"
+    spark.sql.shuffle.partitions: "200"
+    spark.serializer: "org.apache.spark.serializer.KryoSerializer"
+
+# Data Quality Thresholds
+quality:
+  min_completeness: 0.95  # 95% non-null values
+  max_duplicate_rate: 0.01  # Max 1% duplicates
+  max_anomaly_score: 0.05  # Max 5% anomalies
+
+# Business Rules
+business_rules:
+  min_order_amount: 0.01
+  max_order_amount: 1000000
+  valid_payment_methods:
+    - "credit_card"
+    - "debit_card"
+    - "paypal"
+    - "wallet"
+  valid_order_statuses:
+    - "pending"
+    - "confirmed"
+    - "shipped"
+    - "delivered"
+    - "cancelled"
+    - "refunded"
+
+# Database Configuration
+database:
+  type: "postgresql"
+  host: "localhost"
+  port: 5432
+  database: "ecommerce_dw"
+  schema: "public"
+
+# Airflow Configuration
+airflow:
+  dag_id: "ecommerce_etl_pipeline"
+  schedule_interval: "0 2 * * *"  # Daily at 2 AM
+  default_args:
+    owner: "data_engineering"
+    depends_on_past: false
+    email_on_failure: true
+    email_on_retry: false
+    retries: 3
+    retry_delay_minutes: 5
