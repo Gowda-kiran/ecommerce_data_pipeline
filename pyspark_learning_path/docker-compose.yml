@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  pyspark-jupyter:
+    image: jupyter/pyspark-notebook:latest
+    container_name: pyspark-learning
+    ports:
+      - "8888:8888"  # Jupyter Notebook
+      - "4040:4040"  # Spark UI
+    volumes:
+      - ./notebooks:/home/jovyan/work/notebooks
+      - ./examples:/home/jovyan/work/examples
+      - ./exercises:/home/jovyan/work/exercises
+      - ./datasets:/home/jovyan/work/datasets
+      - ./docs:/home/jovyan/work/docs
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - GRANT_SUDO=yes
+    command: start-notebook.sh --NotebookApp.token='' --NotebookApp.password=''
